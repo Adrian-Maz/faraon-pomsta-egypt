@@ -1,40 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Open+Sans&display=swap');
+
 body {
-  font-family: 'Georgia', serif;
-  background-color: #fff8dc;
-  color: #3b2f2f;
   margin: 0;
-  padding: 0;
-  background-image: url('https://www.transparenttextures.com/patterns/papyrus.png');
+  font-family: 'Open Sans', sans-serif;
+  background-color: #fdf6e3;
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e2c290' fill-opacity='0.2'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z'/%3E%3C/g%3E%3C/svg%3E");
+  color: #3e2f1c;
+  line-height: 1.7;
 }
 
-header, footer {
-  background-color: #c19a6b;
+header {
+  background-color: #b08968;
   color: white;
-  padding: 20px;
+  padding: 1.2em 2em;
+  font-family: 'Cinzel', serif;
   text-align: center;
-  border-bottom: 4px solid #8b5e3c;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+  letter-spacing: 1px;
+}
+
+nav {
+  margin-top: 1em;
+}
+
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 4px;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  border-bottom: 2px solid white;
 }
 
 main {
-  padding: 30px;
-  max-width: 800px;
-  margin: 0 auto;
-  background-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  padding: 2em;
+  max-width: 900px;
+  margin: auto;
 }
 
-h1, h2 {
-  font-family: 'Papyrus', 'Georgia', serif;
+section {
+  margin-bottom: 3em;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 1.5em 2em;
+  border-left: 6px solid #b08968;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+h2 {
+  font-family: 'Cinzel', serif;
+  color: #5a3e2b;
+  border-bottom: 2px solid #caa472;
+  padding-bottom: 0.3em;
+  margin-bottom: 1em;
 }
 
 ul {
-  list-style: none;
-  padding-left: 0;
+  padding-left: 1.2em;
 }
 
 ul li {
-  background-color: #f5deb3;
-  margin: 8px 0;
-  padding: 10px;
-  border-left: 5px solid #8b5e3c;
+  margin-bottom: 0.7em;
+}
+
+a {
+  color: #965c2e;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  text-align: center;
+  background-color: #b08968;
+  color: white;
+  padding: 1em;
+  font-size: 0.9em;
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 3em;
 }
