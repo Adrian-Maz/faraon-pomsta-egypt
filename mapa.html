@@ -2,194 +2,68 @@
 <html lang="sk">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rizikové oblasti – Faraónova Pomsta v Egypte</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapa rizika – Faraónova Pomsta</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background: #f9f9f9;
-      color: #222;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 0.5em;
-    }
-    nav {
-      text-align: center;
-      margin-bottom: 1.5em;
-    }
-    nav a {
-      margin: 0 12px;
-      text-decoration: none;
-      color: #0066cc;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    svg {
-      display: block;
-      margin: 0 auto;
-      max-width: 90vw;
-      height: auto;
-      border: 1px solid #ccc;
-      background: white;
-    }
-    .region {
-      cursor: pointer;
-      transition: fill 0.3s;
-    }
-    .high-risk {
-      fill: #e74c3c;
-    }
-    .medium-risk {
-      fill: #f39c12;
-    }
-    .low-risk {
-      fill: #2ecc71;
-    }
-    .region:hover {
-      opacity: 0.7;
-    }
-    #description {
-      max-width: 700px;
-      margin: 2em auto;
-      background: white;
-      padding: 1.5em;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    #description h2 {
-      margin-top: 0;
-    }
-    /* Legend styles */
-    .legend {
-      max-width: 700px;
-      margin: 1em auto 2em;
-      display: flex;
-      justify-content: center;
-      gap: 2em;
-    }
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5em;
-      font-size: 1rem;
-    }
-    .color-box {
-      width: 20px;
-      height: 20px;
-      border-radius: 3px;
-      border: 1px solid #ccc;
-    }
-    .color-high {
-      background-color: #e74c3c;
-    }
-    .color-medium {
-      background-color: #f39c12;
-    }
-    .color-low {
-      background-color: #2ecc71;
-    }
+    /* Dodatočné štýly pre túto mapu */
+    .legend { max-width:700px; margin: 20px auto; display:flex; justify-content:center; gap:2em; }
+    .legend-item { display:flex; align-items:center; gap:0.5em; font-size:1rem; }
+    .color-box { width:20px; height:20px; border:1px solid #ccc; border-radius:3px; }
+    .color-high { background:#e74c3c; }
+    .color-medium { background:#f39c12; }
+    .color-low { background:#2ecc71; }
+    .region:hover { opacity:0.7; cursor:pointer; }
+    #description { max-width:700px; margin: 20px auto; padding:1.5em; background:white; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+    svg { display:block; margin:0 auto; max-width:90vw; height:auto; border:1px solid #ccc; background:white; }
   </style>
 </head>
 <body>
-
   <header>
-    <h1>🗺️ Rizikové oblasti Faraónovej Pomsty v Egypte</h1>
+    <h1>🗺️ Rizikové oblasti v Egypte</h1>
     <nav aria-label="Hlavná navigácia">
       <a href="index.html">Domov</a>
       <a href="video.html">Videá</a>
       <a href="liecba.html">Liečba</a>
       <a href="kontakt.html">Kontakt</a>
-      <a href="mapa.html" aria-current="page" style="text-decoration: underline;">Mapa rizika</a>
+      <a href="mapa.html" style="text-decoration:underline;">Mapa rizika</a>
     </nav>
   </header>
 
   <section>
-    <div class="legend" aria-label="Legenda farebného označenia rizikových oblastí">
+    <div class="legend" aria-label="Legenda">
       <div class="legend-item"><div class="color-box color-high"></div> Vysoké riziko</div>
       <div class="legend-item"><div class="color-box color-medium"></div> Stredné riziko</div>
       <div class="legend-item"><div class="color-box color-low"></div> Nízke riziko</div>
     </div>
-
-    <!-- Jednoduchá SVG mapa Egypta (symbolická, nie všetky detaily) -->
-    <svg viewBox="0 0 600 800" role="img" aria-labelledby="title desc" >
-      <title>Mapa Egypta s vyznačenými rizikovými oblasťami</title>
-      <desc>Farebné oblasti znázorňujú riziko Faraónovej pomsty: červená vysoké, oranžová stredné, zelená nízke riziko.</desc>
-
-      <!-- Oblasti (symbolické polygóny/priemery pre názornosť) -->
-
-      <!-- Káhira a okolie - vysoké riziko -->
-      <rect id="cairo" class="region high-risk" x="250" y="200" width="100" height="120" tabindex="0" aria-describedby="desc-cairo" />
-      <title id="title-cairo">Káhira a okolie - Vysoké riziko</title>
-
-      <!-- Luxor a južné oblasti - stredné riziko -->
-      <circle id="luxor" class="region medium-risk" cx="300" cy="600" r="70" tabindex="0" aria-describedby="desc-luxor" />
-      <title id="title-luxor">Luxor a juh - Stredné riziko</title>
-
-      <!-- Pobrežie Červeného mora - nízke riziko -->
-      <ellipse id="redsea" class="region low-risk" cx="480" cy="550" rx="80" ry="100" tabindex="0" aria-describedby="desc-redsea" />
-      <title id="title-redsea">Pobrežie Červeného mora - Nízke riziko</title>
-
-      <!-- Delta Nílu severne - stredné riziko -->
-      <polygon id="nildelta" class="region medium-risk" points="180,150 230,120 280,160 260,210 210,200" tabindex="0" aria-describedby="desc-nildelta" />
-      <title id="title-nildelta">Delta Nílu - Stredné riziko</title>
-
-      <!-- Sinajský polostrov - nízke riziko -->
-      <polygon id="sinai" class="region low-risk" points="400,100 520,120 480,220 420,210" tabindex="0" aria-describedby="desc-sinai" />
-      <title id="title-sinai">Sinajský polostrov - Nízke riziko</title>
+    <svg viewBox="0 0 600 800" role="img" aria-labelledby="title desc">
+      <title id="title">Mapa Egypta s rizikovými zónami</title>
+      <desc id="desc">Farebné oblasti označujú úrovne rizika podľa farby.</desc>
+      <rect id="cairo" class="region color-box high-risk" x="250" y="200" width="100" height="120" />
+      <circle id="luxor" class="region medium-risk" cx="300" cy="600" r="70" />
+      <ellipse id="redsea" class="region low-risk" cx="480" cy="550" rx="80" ry="100" />
+      <polygon id="nildelta" class="region medium-risk" points="180,150 230,120 280,160 260,210 210,200" />
+      <polygon id="sinai" class="region low-risk" points="400,100 520,120 480,220 420,210" />
     </svg>
-
-    <div id="description" aria-live="polite">
-      <h2>Popis oblastí</h2>
-      <p>Prejdite kurzorom alebo na oblasť na mape a získajte viac informácií o riziku výskytu Faraónovej pomsty.</p>
-    </div>
+    <div id="description"><h2>Popis oblastí</h2><p>Prejdite kurzorom ponad oblasť na mape pre viac informácií.</p></div>
   </section>
 
   <script>
     const descriptions = {
-      cairo: `<h3>Káhira a okolie</h3>
-              <p>Káhira je metropolitná oblasť s vysokou hustotou obyvateľstva a množstvom turistov. Vysoké riziko Faraónovej pomsty je spôsobené častými problémami s kvalitou vody a stravovania na miestach s veľkým počtom ľudí.</p>
-              <p>Odporúča sa dbať na prísnu hygienu, piť iba balenú vodu a vyhýbať sa pouličným jedlám.</p>`,
-      luxor: `<h3>Luxor a južné oblasti</h3>
-              <p>Tieto oblasti majú stredné riziko kvôli obmedzenejším možnostiam kvalitnej vody a menej rozvinutej infraštruktúre.</p>
-              <p>Turisti by mali byť opatrní pri výbere jedla a nápojov, vyhýbať sa surovým potravinám a ľadu.</p>`,
-      redsea: `<h3>Pobrežie Červeného mora</h3>
-               <p>Oblasť známa pre turistické strediská s dobrou infraštruktúrou a kvalitnou pitnou vodou.</p>
-               <p>Riziko Faraónovej pomsty je tu nízke, avšak stále platia základné opatrenia hygieny.</p>`,
-      nildelta: `<h3>Delta Nílu</h3>
-                 <p>Riziko je tu stredné, hlavne kvôli poľnohospodárskym aktivitám, ktoré môžu ovplyvniť kvalitu vody.</p>
-                 <p>Odporúča sa konzumovať len preverené potraviny a pitnú vodu z balených zdrojov.</p>`,
-      sinai: `<h3>Sinajský polostrov</h3>
-              <p>Turisticky atraktívna oblasť s nízkym rizikom, keďže je tu často lepšia kontrola kvality potravín a vody v hotelových zariadeniach.</p>
-              <p>Stále však treba byť obozretný a dodržiavať základné hygienické zásady.</p>`
+      cairo: `<h3>Káhira a okolie</h3><p>Vysoké riziko kvôli veľkej koncentrácii turistov a pre možnosť kontaminácie vody.</p>`,
+      luxor: `<h3>Luxor a juh</h3><p>Stredné riziko – menej rozvinutá infraštruktúra a obmedzený prístup k čistej vode.</p>`,
+      redsea: `<h3>Pobrežie Červeného mora</h3><p>Nízke riziko – moderné strediská s kvalitnou infraštruktúrou.</p>`,
+      nildelta: `<h3>Delta Nílu</h3><p>Stredné riziko – poľnohospodárske oblasti môžu ovplyvniť kvalitu vody.</p>`,
+      sinai: `<h3>Sinajský polostrov</h3><p>Nízke riziko – turistické oblasti s lepšou kontrolou hygieny.</p>`
     };
-
-    const descriptionDiv = document.getElementById('description');
-    const regions = document.querySelectorAll('.region');
-
-    regions.forEach(region => {
-      region.addEventListener('mouseenter', () => {
-        descriptionDiv.innerHTML = descriptions[region.id];
-      });
-      region.addEventListener('focus', () => {
-        descriptionDiv.innerHTML = descriptions[region.id];
-      });
-      region.addEventListener('mouseleave', () => {
-        descriptionDiv.innerHTML = `<h2>Popis oblastí</h2>
-                                    <p>Prejdite kurzorom alebo na oblasť na mape a získajte viac informácií o riziku výskytu Faraónovej pomsty.</p>`;
-      });
-      region.addEventListener('blur', () => {
-        descriptionDiv.innerHTML = `<h2>Popis oblastí</h2>
-                                    <p>Prejdite kurzorom alebo na oblasť na mape a získajte viac informácií o riziku výskytu Faraónovej pomsty.</p>`;
-      });
+    document.querySelectorAll('.region').forEach(region => {
+      region.addEventListener('mouseenter', () => document.getElementById('description').innerHTML = descriptions[region.id]);
+      region.addEventListener('mouseleave', () => document.getElementById('description').innerHTML = `<h2>Popis oblastí</h2><p>Prejdite kurzorom ponad oblasť na mape pre viac informácií.</p>`);
     });
   </script>
 
   <footer>
-    <p>© 2025 Zdravotný sprievodca Egyptom | Zdravý turista = šťastný turista 🏺</p>
+    <p>© 2025 Sprievodca Egyptom | Zdravý turista = šťastný turista 🏺</p>
   </footer>
 </body>
 </html>
